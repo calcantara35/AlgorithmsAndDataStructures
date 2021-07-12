@@ -16,7 +16,7 @@ def twoSum(nums, target):
     # the value of the hashmap at specific key will be the index of the current iteration
     hashMap = {}
     # enumerate lets you have keyvalue pairs (tuple) and for this case, the i will be the index and n will be the value at that index
-    for i,n in enumerate(nums):
+    for i, n in enumerate(nums):
         # simple equation to find the potential match
         potential = target - n
         if potential in hashMap:
@@ -25,7 +25,6 @@ def twoSum(nums, target):
         # if not in the hashmap, we add to the hashmap.
         # key will be the value at the specific iteration and the value will be the index at the specific iteration
         hashMap[n] = i
-
 
 
 def twoNumberSum(array, targetSum):

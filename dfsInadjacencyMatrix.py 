@@ -1,0 +1,50 @@
+class Graph:
+    # empty adjacency Matrix
+    adj = []
+
+    # function to fill empty adjacency matrix
+    def __init__(self, v, e):
+        self.v = v
+        self.e = e
+        Graph.adj = [[0 for i in range(v)]
+                     for j in range(v)]
+
+    # function to add an edge to the graph
+    def addEdge(self, start, e):
+
+        # considering a bidirectional edge
+        Graph.adj[start][e] = 1
+        Graph.adj[e][start] = 1
+
+    # function to perform dfs on the graph
+    def dfs(self, start, visited):
+        # print current node
+        print(start, end=" ")
+        
+        # set current node as visited
+        visited[start] = True
+
+        # for every node of the graph
+        for i in range(self.v):
+            # if some node is adjacent to the current node and it has not already been visited...
+            if Graph.adj[start][i] == 1 and not visited[i]:
+                # call dfs on that specific node and pass the visited param
+                self.dfs(i, visited)
+
+
+# driver code
+v, e = 5, 4
+
+# Create the graph
+graph = Graph(v, e)
+graph.addEdge(0, 1)
+graph.addEdge(0, 2)
+graph.addEdge(0, 3)
+graph.addEdge(0, 4)
+
+# Visited vectpr to so that a vertex
+# is not visited more than once
+# initializing the vector to false so no vertex is visited at the beginning
+visited = [False] * v
+
+graph.dfs(0, visited)

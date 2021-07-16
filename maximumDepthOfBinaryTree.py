@@ -15,10 +15,13 @@ output = 3
 
 
 # o(n) -> time and worst case for space o(h)
+import collections
+
+
 def maxDepth(root):
     if not root:
         return 0
-    
+
     return 1 + max(maxDepth(root.left), maxDepth(root.right))
 
 
@@ -33,12 +36,12 @@ def iterativeMaxDepth(root):
             result = max(result, depth)
             stack.append([node.left, depth + 1])
             stack.append([node.right, depth + 1])
-    
+
     return result
 
 
 # you can import collections.deque
-import collections
+
 
 def bfsMaxDepth(root):
     if not root:
@@ -46,7 +49,7 @@ def bfsMaxDepth(root):
     level = 0
     q = collections.deque([root])
     while q:
-        for i in range(len(q)):
+        for _ in range(len(q)):
             node = q.popleft()
             if node.left:
                 q.append(node.left)
@@ -54,5 +57,3 @@ def bfsMaxDepth(root):
                 q.append(node.right)
         level += 1
     return level
-
-        

@@ -36,6 +36,8 @@ def iterativeMaxDepth(root):
     
     return result
 
+
+# you can import collections.deque
 import collections
 
 def bfsMaxDepth(root):
